@@ -6,7 +6,15 @@ var $saveButton = $('.save-button');
 var $searchInput = $('.search-input');
 var $ideaContainer = $('.idea-container');
 var ideasArray = [];
-var storedIdeas = JSON.parse(localStorage.getItem("ideasArray"));
+var counter = 0;
+
+//added document ready function to storedIdeas variable
+$(document).ready(function() {
+  var storedIdeas = JSON.parse(localStorage.getItem('ideasArray'));
+  if (storedIdeas) {
+    ideasArray = storage;
+  }
+});
 
 $saveButton.on('click', function(event) {
   event.preventDefault();
@@ -38,11 +46,11 @@ function generateNewIdea() {
       </header>
       <body class="idea-body">
         <p class="idea-body">${idea.body}</p>
-        <button class="thumbs-up" type="button">TU</button>
-        <button class="thumbs-down" type="button">TD</button>
       </body>
       <footer class="idea-footer">
-
+        <button class="thumbs-up" type="button">TU</button>
+        <button class="thumbs-down" type="button">TD</button>
+        <p>ranking: <span class="ranking">swill</span></p>
       </footer>
     </article>`).prependTo($ideaContainer);
 }
@@ -56,10 +64,32 @@ function clearInput() {
 function storeTheArray() {
   localStorage.setItem('ideasArray', JSON.stringify(ideasArray));
 }
-//to set array into localstorage we
+//to set array into localstorage
 //JSON Stringify the ideasArray
 //localstorage.set(JSON Stringify ideasArray)
 
 $ideaContainer.on('click', '.remove-idea', function() {
   $(this).closest('article').remove();
+});
+
+$ideaContainer.on('click', '.thumbs-up', function() {
+    counter++;
+    if (counter === 1) {
+      $('span.ranking').text('plausible');
+    }
+    if (counter === 2) {
+      $('span.ranking').text('genius');
+    }
+});
+
+//need to only change the ranking on each individual idea
+
+$ideaContainer.on('click', '.thumbs-down', function() {
+    counter--;
+    if (counter === 1) {
+    $('span.ranking').text('plausible');
+    }
+    if (counter === 2) {
+    $('span.ranking').text('swill');
+  }
 });
