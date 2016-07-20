@@ -16,7 +16,7 @@ h3 {
   font-weight: 700;
 }
 
-header {
+.idea-input-header {
   background-color: #E5F3F2;
   color: #6D6E71;
   display: flex;
@@ -26,7 +26,8 @@ header {
   flex-direction: column;
   text-transform: lowercase;
 }
-header em {
+
+.idea-input-header em {
   color: #00A79D;
 }
 
@@ -79,5 +80,17 @@ header em {
 }
 
 .idea {
+  margin: auto;
+  display:inline-block;
+  width: 66vw;
+  color: #939598;
+  border-bottom: 100% solid #D1D3D4;
+  height: 100%;
+}
+.idea-header {
+  vertical-align: top;
+}
 
+.idea-header-buttons {
+  float: right;
 }
