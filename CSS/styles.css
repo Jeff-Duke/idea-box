@@ -1,21 +1,17 @@
 * {
   font-family: 'Open Sans', sans-serif;
-  /*font-weight: 400;*/
 }
-
-/*font links in html account for the correct font-size already*/
 
 h1 {
   font-family: 'Roboto Slab', serif;
   font-size: 2em;
-  /*font-weight: 700;*/
-  margin-bottom: 10px;
+  font-weight: 700;
+  margin-bottom: 1em;
 }
 
 h3 {
   font-family: 'Roboto Slab', serif;
   font-size: 1.3em;
-  /*font-weight: 700;*/
 }
 
 .idea-input-header {
@@ -26,18 +22,16 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /*text-transform: lowercase;*/
-  /*this didn't change anything*/
 }
 
-.idea-input-header em {
+.idea-input-header span {
   color: #00A79D;
 }
 
 .new-idea-form {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 30em;
 }
 
 .title-input, .body-input {
@@ -45,17 +39,20 @@ h3 {
   height: 2em;
   margin-top: 10px;
   text-indent: 8px;
+  margin: 0;
+ /* width: 99%*/
 }
 
 .save-button {
   font-size: 1.2em;
-  /*border-radius: 0;*/
   background-color: #00A79D;
   color: #FFFFFF;
   height: 2em;
   border: none;
-  /*box-shadow: none;*/
-  margin-top: 10px;
+  margin-top: 1em;
+  box-shadow: none;
+  margin-top: 5px;
+  width: 100%;
 }
 
 .save-button:hover {
@@ -73,7 +70,7 @@ h3 {
   height: 2em;
   margin-top: 20px;
   text-indent: 8px;
-  width: 500px;
+  width: 30em;
 }
 
 .idea-container {
