@@ -7,7 +7,7 @@ h1 {
   font-family: 'Roboto Slab', serif;
   font-size: 2em;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 1em;
 }
 
 h3 {
@@ -27,24 +27,26 @@ h3 {
   text-transform: lowercase;
 }
 
-.idea-input-header em {
+.idea-input-header span {
   color: #00A79D;
 }
 
 .new-idea-form {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 30em;
 }
 
 .title-input {
-  margin: 10px;
+  margin: 0;
   height: 2.5em;
+  width: 99%
 }
 
 .body-input {
-  margin: 10px;
+  margin: 0;
   height: 2.5em;
+  width: 99%
 }
 
 .save-button {
@@ -56,6 +58,7 @@ h3 {
   border: none;
   box-shadow: none;
   margin-top: 5px;
+  width: 100%;
 }
 
 .save-button:hover {
@@ -69,7 +72,7 @@ h3 {
 }
 
 .search-input {
-  width: 500px;
+  width: 43em;
   height: 2.5em;
 }
 
