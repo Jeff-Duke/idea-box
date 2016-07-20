@@ -1,7 +1,57 @@
 * {
   font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
 }
 
 h1 {
   font-family: 'Roboto Slab', serif;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+header {
+  background-color: #E5F3F2;
+  color: #6D6E71;
+  display: flex;
+  height: 35vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-transform: lowercase;
+}
+header em {
+  color: #00A79D;
+}
+
+.new-idea-form {
+  display: flex;
+  flex-direction: column;
+  width: 66vw;
+}
+
+.new-idea-form input {
+  margin: 10px;
+  height: 2.5em;
+}
+
+.new-idea-form button {
+  border-radius: 0;
+  background-color: #00A79D;
+  color: #FFFFFF;
+  height: 3em;
+  border: none;
+  box-shadow: none;
+  margin-top: 5px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 66vw;
+  height: 2.5em;
 }
