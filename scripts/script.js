@@ -8,6 +8,7 @@ $(document).ready(function() {
   if (storedIdeas) {
     ideasArray = storedIdeas;
   }
+  ideasToPage()
 });
 
 function Idea(title, body) {
@@ -24,24 +25,8 @@ function generateNewIdea() {
 
   ideasArray.push(idea);
 
-  $(`
-    <article class="idea" id=${idea.id}>
-      <header class= "idea-header">
-        <h3 class="idea-title">${idea.title}</h3>
-          <section class="idea-header-buttons">
-            <button class="remove-idea" type="button">X</button>
-          </section>
-      </header>
-      <body class="idea-body">
-        <p class="idea-body">${idea.body}</p>
-      </body>
-      <footer class="idea-footer">
-        <button class="thumbs-up" type="button">TU</button>
-        <button class="thumbs-down" type="button">TD</button>
-        <p>ranking: <span class="ranking">${idea.quality}</span></p>
-      </footer>
-    </article>`).prependTo($ideaContainer);
-    storeTheArray();
+  storeTheArray();
+  ideasToPage();
 }
 
 function clearInput() {
@@ -53,9 +38,6 @@ function clearInput() {
 function storeTheArray() {
   localStorage.setItem('ideasArray', JSON.stringify(ideasArray));
 }
-//to set array into localstorage
-//JSON Stringify the ideasArray
-//localstorage.set(JSON Stringify ideasArray)
 
 function thumbsUpRanking() {
   var $ideaElement = $(this).parents('.idea');
@@ -78,6 +60,30 @@ function thumbsDownRanking() {
   }
   if (ranking == 'plausible') {
     $rankingElement.text('swill');
+  }
+}
+
+function ideasToPage() {
+  for (var i = 0; i < ideasArray.length; i++) {
+    var storedIdea = ideasArray[i];
+
+    $(`
+      <article class="idea" id=${storedIdea.id}>
+        <header class= "idea-header">
+          <h3 class="idea-title">${storedIdea.title}</h3>
+            <section class="idea-header-buttons">
+              <button class="remove-idea" type="button">X</button>
+            </section>
+        </header>
+        <body class="idea-body">
+          <p class="idea-body">${storedIdea.body}</p>
+        </body>
+        <footer class="idea-footer">
+          <button class="thumbs-up" type="button">TU</button>
+          <button class="thumbs-down" type="button">TD</button>
+          <p>ranking: <span class="ranking">${storedIdea.quality}</span></p>
+        </footer>
+      </article>`).prependTo($ideaContainer);
   }
 }
 
