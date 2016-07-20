@@ -30,11 +30,12 @@ function generateNewIdea() {
 
   $(`
     <article class="idea" id=${idea.uniqueId}>
-      <h3>${idea.title}</h3>
+      <h3 class="idea-title">${idea.title}</h3>
       <button class="remove-idea" type="button">X</button>
-      <p>${idea.body}</p>
+      <p class="idea-body">${idea.body}</p>
       <button class="thumbs-up" type="button">TU</button>
       <button class="thumbs-down" type="button">TD</button>
+      <footer class="idea-footer"></footer>
     </article>`).prependTo($ideaContainer);
 }
 
