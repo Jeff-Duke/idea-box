@@ -1,6 +1,6 @@
 * {
   font-family: 'Open Sans', sans-serif;
-  box-sizing: border-box;
+  font-weight: 400;
 }
 
 h1 {
@@ -8,6 +8,12 @@ h1 {
   font-size: 2em;
   font-weight: 700;
   margin-bottom: 10px;
+}
+
+h3 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.3em;
+  font-weight: 700;
 }
 
 header {
@@ -27,22 +33,32 @@ header em {
 .new-idea-form {
   display: flex;
   flex-direction: column;
-  width: 66vw;
+  width: 500px;
 }
 
-.new-idea-form input {
+.title-input {
   margin: 10px;
   height: 2.5em;
 }
 
-.new-idea-form button {
+.body-input {
+  margin: 10px;
+  height: 2.5em;
+}
+
+.save-button {
+  font-size: 1.2em;
   border-radius: 0;
   background-color: #00A79D;
   color: #FFFFFF;
-  height: 3em;
+  height: 2em;
   border: none;
   box-shadow: none;
   margin-top: 5px;
+}
+
+.save-button:hover {
+  background-color: #045E55;
 }
 
 .search-form {
@@ -52,6 +68,16 @@ header em {
 }
 
 .search-input {
-  width: 66vw;
+  width: 500px;
   height: 2.5em;
+}
+
+.idea-container {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.idea {
+
 }
