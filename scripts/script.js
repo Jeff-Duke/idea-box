@@ -38,12 +38,29 @@ function generateNewIdea() {
 
   $(`
     <article class="idea" id=${idea.uniqueId}>
+<<<<<<< HEAD
       <h3>${idea.title}</h3>
       <button class="remove-idea" type="button">X</button>
       <p>${idea.body}</p>
       <button class="thumbs-up" type="button">TU</button>
       <button class="thumbs-down" type="button">TD</button>
       <p>ranking: <span class="ranking">swill</span></p>
+=======
+      <header class= "idea-header">
+        <h3 class="idea-title">${idea.title}</h3>
+          <section class="idea-header-buttons">
+            <button class="remove-idea" type="button">X</button>
+          </section>  
+      </header>
+      <body class="idea-body">
+        <p class="idea-body">${idea.body}</p>
+        <button class="thumbs-up" type="button">TU</button>
+        <button class="thumbs-down" type="button">TD</button>
+      </body>
+      <footer class="idea-footer">
+
+      </footer>
+>>>>>>> master
     </article>`).prependTo($ideaContainer);
 }
 

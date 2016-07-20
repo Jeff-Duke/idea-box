@@ -4,4 +4,97 @@
 
 h1 {
   font-family: 'Roboto Slab', serif;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.3em;
+}
+
+.idea-input-header {
+  background-color: #E5F3F2;
+  color: #6D6E71;
+  display: flex;
+  height: 35vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.idea-input-header span {
+  color: #00A79D;
+}
+
+.new-idea-form {
+  display: flex;
+  flex-direction: column;
+  width: 30em;
+}
+
+.title-input, .body-input {
+  font-size: 16px;
+  height: 2em;
+  margin-top: 10px;
+  text-indent: 8px;
+  margin: 0;
+ /* width: 99%*/
+}
+
+.save-button {
+  font-size: 1.2em;
+  background-color: #00A79D;
+  color: #FFFFFF;
+  height: 2em;
+  border: none;
+  margin-top: 1em;
+  box-shadow: none;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.save-button:hover {
+  background-color: #045E55;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  font-size: 16px;
+  height: 2em;
+  margin-top: 20px;
+  text-indent: 8px;
+  width: 30em;
+}
+
+.idea-container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.idea {
+  margin: auto;
+  margin-top: 15px;
+  display: flex
+  width: 500px;
+  color: #939598;
+  border-bottom: 100% solid #D1D3D4;
+  height: 100%;
+}
+.idea-header {
+  vertical-align: top;
+}
+
+.idea-header-buttons {
+  float: right;
 }
