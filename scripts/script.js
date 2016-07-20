@@ -1,19 +1,15 @@
-//make a new function for handling ideas
-//add idea function
-// takes titleInput and bodyInput, creates a new article, prepends the idea-container with the new idea.
 //adds buttons for quality
 //sets quality by default to 'swill'
-//sets a unique ID on the idea
-// we want the idea to be passed to local storage
-//function createIdea(uniqueID, title, body, quality)
+// we want the array to be passed to local storage
 
 var $saveButton = $('.save-button');
 var $searchInput = $('.search-input');
 var $ideaContainer = $('.idea-container');
+var ideasArray = [];
+var storedIdeas = JSON.parse(localStorage.getItem("ideasArray"));
 
 $saveButton.on('click', function(event) {
   event.preventDefault();
-
   generateNewIdea();
   clearInput();
 });
@@ -30,6 +26,8 @@ function generateNewIdea() {
   var $uniqueId = Date.now();
   var idea = new Idea($uniqueId , $titleInput, $bodyInput);
 
+  ideasArray.push(idea);
+
   $(`
     <article class="idea" id=${idea.uniqueId}>
       <h3>${idea.title}</h3>
@@ -45,6 +43,13 @@ function clearInput() {
   $('.body-input').val('');
   $('.title-input').focus();
 }
+
+function storeTheArray() {
+  localStorage.setItem('ideasArray', JSON.stringify(ideasArray));
+}
+//to set array into localstorage we
+//JSON Stringify the ideasArray
+//localstorage.set(JSON Stringify ideasArray)
 
 $ideaContainer.on('click', '.remove-idea', function() {
   $(this).closest('article').remove();
