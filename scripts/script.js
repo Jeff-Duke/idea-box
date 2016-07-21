@@ -63,19 +63,20 @@ function clearInput() {
 function thumbsUpRanking() {
   var $ideaElement = $(this).parents('.idea-footer');
   var $rankingElement = $ideaElement.find('.ranking');
-  // var ranking = $('.ranking').text();
+
   if ($rankingElement.text() == 'plausible') {
     $rankingElement.text('genius');
   }
   if ($rankingElement.text() == 'swill') {
     $rankingElement.text('plausible');
   }
+
 }
 
 function thumbsDownRanking() {
   var $ideaElement = $(this).parents('.idea-footer');
   var $rankingElement = $ideaElement.find('.ranking');
-  // var ranking = $('.ranking').text();
+
   if ($rankingElement.text() == 'plausible') {
     $rankingElement.text('swill');
   }
@@ -83,11 +84,6 @@ function thumbsDownRanking() {
     $rankingElement.text('plausible');
   }
 }
-
-// function updateIdeaQuality() {
-//   for (var i = 0; i < ideasArray.length; i++) {
-//     var storedIdea = ideasArray[i];
-// }
 
 $saveButton.on('click', function(event) {
   event.preventDefault();
