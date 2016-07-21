@@ -8,7 +8,7 @@ $(document).ready(function() {
   if (storedIdeas) {
     ideasArray = storedIdeas;
   }
-  ideasToPage()
+  ideasToPage();
 });
 
 function Idea(title, body) {
@@ -44,7 +44,7 @@ function thumbsUpRanking() {
   var $rankingElement = $ideaElement.find('.ranking');
   var ranking = $('.ranking').text();
   if (ranking == 'swill') {
-    $rankingElement.text('plausible')
+    $rankingElement.text('plausible');
   }
   if (ranking == 'plausible') {
     $rankingElement.text('genius');
@@ -56,7 +56,7 @@ function thumbsDownRanking() {
   var $rankingElement = $ideaElement.find('.ranking');
   var ranking = $('.ranking').text();
   if (ranking == 'genius') {
-    $rankingElement.text('plausible')
+    $rankingElement.text('plausible');
   }
   if (ranking == 'plausible') {
     $rankingElement.text('swill');
@@ -93,9 +93,22 @@ $saveButton.on('click', function(event) {
   clearInput();
 });
 
+//need to make id equal to the random number date.now() creates
+//remove idea from array, localStorage, and page
 $ideaContainer.on('click', '.remove-idea', function() {
   $(this).closest('article').remove();
+  findIdeaById();
 });
+
+function findIdeaById() {
+  var id = Date.now();
+  for (var i = 0; i < ideasArray.length; i++) {
+    if (ideasArray[i].id === id) {
+      ideasArray.splice(i, 1);
+      localStorage.removeItem();
+    }
+  }
+}
 
 $ideaContainer.on('click', '.thumbs-up', thumbsUpRanking);
 
