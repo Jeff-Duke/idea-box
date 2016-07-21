@@ -1,5 +1,4 @@
 * {
-  font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
 }
 
@@ -14,11 +13,15 @@ h3 {
   font-size: 1.3em;
 }
 
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .idea-input-header {
   background-color: #E5F3F2;
   color: #6D6E71;
   display: flex;
-  height: 35vh;
+  height: 40vh;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -37,9 +40,8 @@ h3 {
 .title-input, .body-input {
   font-size: 1.2em;
   height: 2em;
-  margin-top: 1em 0;
+  margin: .5em 0;
   text-indent: 8px;
-  margin: 0;
 }
 
 .save-button {
@@ -77,23 +79,81 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
 }
 
 .idea {
   margin: auto;
-  margin-top: 15px;
-  display: flex
-  width: 500px;
+  margin-top: 5px;
+  width: 30em;
   color: #939598;
-  border-bottom: 100% solid #D1D3D4;
-  height: 100%;
+  border-bottom: 1px solid #D1D3D4;
+  line-height: 1.4em;
 }
+
 .idea-header {
-  vertical-align: top;
+  display: flex;
+  margin-bottom: 15px;
 }
 
 .idea-header-buttons {
-  float: right;
+  display: flex;
+  justify-content: flex-end;
+  width: 68%;
+}
+
+.remove-idea {
+  background: url(../img/delete.svg) no-repeat;
+  border: none;
+  height: 20px;
+  width: 20px;
+}
+
+.remove-idea:hover {
+  background: url(../img/delete-hover.svg) no-repeat;
+  border: none;
+  height: 20px;
+  width: 20px;
+}
+
+.idea-footer {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.thumbs-up {
+  background: url(../img/upvote.svg) no-repeat;
+  border: none;
+  margin: 0 2px;
+  height: 20px;
+  width: 20px;
+}
+
+.thumbs-up:hover {
+  background: url(../img/upvote-hover.svg) no-repeat;
+  border: none;
+  margin: 0 2px;
+  height: 20px;
+  width: 20px;
+}
+
+.thumbs-down {
+  background: url(../img/downvote.svg) no-repeat;
+  border: none;
+  margin: 0;
+  height: 20px;
+  width: 20px;
+}
+
+.thumbs-down:hover {
+  background: url(../img/downvote-hover.svg) no-repeat;
+  border: none;
+  margin: 0;
+  height: 20px;
+  width: 20px;
+}
+
+footer p{
+  margin-left: 5px;
+  color: #6d6E71;
 }

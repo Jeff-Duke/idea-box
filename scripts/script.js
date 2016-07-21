@@ -5,9 +5,7 @@ var ideasArray = [];
 
 $(document).ready(function() {
   var storedIdeas = JSON.parse(localStorage.getItem('ideasArray'));
-  if (storedIdeas) {
-    ideasArray = storedIdeas;
-  }
+  if (storedIdeas) { ideasArray = storedIdeas; }
   ideasToPage();
 });
 
@@ -28,39 +26,8 @@ function generateNewIdea() {
   storeTheArray();
   ideasToPage();
 }
-
-function clearInput() {
-  $('.title-input').val('');
-  $('.body-input').val('');
-  $('.title-input').focus();
-}
-
 function storeTheArray() {
   localStorage.setItem('ideasArray', JSON.stringify(ideasArray));
-}
-
-function thumbsUpRanking() {
-  var $ideaElement = $(this).parents('.idea');
-  var $rankingElement = $ideaElement.find('.ranking');
-  var ranking = $('.ranking').text();
-  if (ranking == 'swill') {
-    $rankingElement.text('plausible');
-  }
-  if (ranking == 'plausible') {
-    $rankingElement.text('genius');
-  }
-}
-
-function thumbsDownRanking() {
-  var $ideaElement = $(this).parents('.idea');
-  var $rankingElement = $ideaElement.find('.ranking');
-  var ranking = $('.ranking').text();
-  if (ranking == 'genius') {
-    $rankingElement.text('plausible');
-  }
-  if (ranking == 'plausible') {
-    $rankingElement.text('swill');
-  }
 }
 
 function ideasToPage() {
@@ -72,20 +39,55 @@ function ideasToPage() {
         <header class= "idea-header">
           <h3 class="idea-title">${storedIdea.title}</h3>
             <section class="idea-header-buttons">
-              <button class="remove-idea" type="button">X</button>
+              <button class="remove-idea" type="button"></button>
             </section>
         </header>
         <body class="idea-body">
           <p class="idea-body">${storedIdea.body}</p>
         </body>
         <footer class="idea-footer">
-          <button class="thumbs-up" type="button">TU</button>
-          <button class="thumbs-down" type="button">TD</button>
+          <button class="thumbs-up" type="button"></button>
+          <button class="thumbs-down" type="button"></button>
           <p>ranking: <span class="ranking">${storedIdea.quality}</span></p>
         </footer>
       </article>`).prependTo($ideaContainer);
   }
 }
+
+function clearInput() {
+  $('.title-input').val('');
+  $('.body-input').val('');
+  $('.title-input').focus();
+}
+
+function thumbsUpRanking() {
+  var $ideaElement = $(this).parent('.idea-footer');
+  var $rankingElement = $ideaElement.siblings('.ranking');
+  var ranking = $('.ranking').text();
+  if (ranking == 'swill') {
+    $rankingElement.text('plausible');
+  }
+  if (ranking == 'plausible') {
+    $rankingElement.text('genius');
+  }
+}
+
+function thumbsDownRanking() {
+  var $ideaElement = $(this).parent('.idea-footer');
+  var $rankingElement = $ideaElement.siblings('.ranking');
+  var ranking = $('.ranking').text();
+  if (ranking == 'genius') {
+    $rankingElement.text('plausible');
+  }
+  if (ranking == 'plausible') {
+    $rankingElement.text('swill');
+  }
+}
+
+// function updateIdeaQuality() {
+//   for (var i = 0; i < ideasArray.length; i++) {
+//     var storedIdea = ideasArray[i];
+// }
 
 $saveButton.on('click', function(event) {
   event.preventDefault();
