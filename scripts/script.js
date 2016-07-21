@@ -5,10 +5,8 @@ var ideasArray = [];
 
 $(document).ready(function() {
   var storedIdeas = JSON.parse(localStorage.getItem('ideasArray'));
-  if (storedIdeas) {
-    ideasArray = storedIdeas;
-  }
-  ideasToPage()
+  if (storedIdeas) { ideasArray = storedIdeas; }
+  ideasToPage();
 });
 
 function Idea(title, body) {
@@ -28,39 +26,8 @@ function generateNewIdea() {
   storeTheArray();
   ideasToPage();
 }
-
-function clearInput() {
-  $('.title-input').val('');
-  $('.body-input').val('');
-  $('.title-input').focus();
-}
-
 function storeTheArray() {
   localStorage.setItem('ideasArray', JSON.stringify(ideasArray));
-}
-
-function thumbsUpRanking() {
-  var $ideaElement = $(this).parents('.idea');
-  var $rankingElement = $ideaElement.find('.ranking');
-  var ranking = $('.ranking').text();
-  if (ranking == 'swill') {
-    $rankingElement.text('plausible')
-  }
-  if (ranking == 'plausible') {
-    $rankingElement.text('genius');
-  }
-}
-
-function thumbsDownRanking() {
-  var $ideaElement = $(this).parents('.idea');
-  var $rankingElement = $ideaElement.find('.ranking');
-  var ranking = $('.ranking').text();
-  if (ranking == 'genius') {
-    $rankingElement.text('plausible')
-  }
-  if (ranking == 'plausible') {
-    $rankingElement.text('swill');
-  }
 }
 
 function ideasToPage() {
@@ -86,6 +53,41 @@ function ideasToPage() {
       </article>`).prependTo($ideaContainer);
   }
 }
+
+function clearInput() {
+  $('.title-input').val('');
+  $('.body-input').val('');
+  $('.title-input').focus();
+}
+
+function thumbsUpRanking() {
+  var $ideaElement = $(this).parent('.idea-footer');
+  var $rankingElement = $ideaElement.siblings('.ranking');
+  var ranking = $('.ranking').text();
+  if (ranking == 'swill') {
+    $rankingElement.text('plausible');
+  }
+  if (ranking == 'plausible') {
+    $rankingElement.text('genius');
+  }
+}
+
+function thumbsDownRanking() {
+  var $ideaElement = $(this).parent('.idea-footer');
+  var $rankingElement = $ideaElement.siblings('.ranking');
+  var ranking = $('.ranking').text();
+  if (ranking == 'genius') {
+    $rankingElement.text('plausible');
+  }
+  if (ranking == 'plausible') {
+    $rankingElement.text('swill');
+  }
+}
+
+// function updateIdeaQuality() {
+//   for (var i = 0; i < ideasArray.length; i++) {
+//     var storedIdea = ideasArray[i];
+// }
 
 $saveButton.on('click', function(event) {
   event.preventDefault();
