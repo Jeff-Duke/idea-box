@@ -39,15 +39,15 @@ function ideasToPage() {
         <header class= "idea-header">
           <h3 class="idea-title">${storedIdea.title}</h3>
             <section class="idea-header-buttons">
-              <button class="remove-idea" type="button">X</button>
+              <button class="remove-idea" type="button"></button>
             </section>
         </header>
         <body class="idea-body">
           <p class="idea-body">${storedIdea.body}</p>
         </body>
         <footer class="idea-footer">
-          <button class="thumbs-up" type="button">TU</button>
-          <button class="thumbs-down" type="button">TD</button>
+          <button class="thumbs-up" type="button"></button>
+          <button class="thumbs-down" type="button"></button>
           <p>ranking: <span class="ranking">${storedIdea.quality}</span></p>
         </footer>
       </article>`).prependTo($ideaContainer);
