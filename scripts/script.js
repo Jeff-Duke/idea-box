@@ -61,26 +61,26 @@ function clearInput() {
 }
 
 function thumbsUpRanking() {
-  var $ideaElement = $(this).parent('.idea-footer');
-  var $rankingElement = $ideaElement.siblings('.ranking');
-  var ranking = $('.ranking').text();
-  if (ranking == 'swill') {
-    $rankingElement.text('plausible');
-  }
-  if (ranking == 'plausible') {
+  var $ideaElement = $(this).parents('.idea-footer');
+  var $rankingElement = $ideaElement.find('.ranking');
+  // var ranking = $('.ranking').text();
+  if ($rankingElement.text() == 'plausible') {
     $rankingElement.text('genius');
+  }
+  if ($rankingElement.text() == 'swill') {
+    $rankingElement.text('plausible');
   }
 }
 
 function thumbsDownRanking() {
-  var $ideaElement = $(this).parent('.idea-footer');
-  var $rankingElement = $ideaElement.siblings('.ranking');
-  var ranking = $('.ranking').text();
-  if (ranking == 'genius') {
-    $rankingElement.text('plausible');
-  }
-  if (ranking == 'plausible') {
+  var $ideaElement = $(this).parents('.idea-footer');
+  var $rankingElement = $ideaElement.find('.ranking');
+  // var ranking = $('.ranking').text();
+  if ($rankingElement.text() == 'plausible') {
     $rankingElement.text('swill');
+  }
+  if ($rankingElement.text() == 'genius') {
+    $rankingElement.text('plausible');
   }
 }
 
