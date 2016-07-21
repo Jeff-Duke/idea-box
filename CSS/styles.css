@@ -83,16 +83,16 @@ body {
 
 .idea {
   margin: auto;
-  margin-top: 2em;
+  margin-top: 5px;
   width: 30em;
   color: #939598;
   border-bottom: 1px solid #D1D3D4;
-  line-height: 1.2em;
+  line-height: 1.4em;
 }
 
 .idea-header {
   display: flex;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .idea-header-buttons {
@@ -104,52 +104,53 @@ body {
 .remove-idea {
   background: url(../img/delete.svg) no-repeat;
   border: none;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
 }
 
 .remove-idea:hover {
   background: url(../img/delete-hover.svg) no-repeat;
   border: none;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
 }
 
 .idea-footer {
   display: flex;
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .thumbs-up {
   background: url(../img/upvote.svg) no-repeat;
   border: none;
   margin: 0 2px;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
 }
 
 .thumbs-up:hover {
   background: url(../img/upvote-hover.svg) no-repeat;
   border: none;
   margin: 0 2px;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
 }
 
 .thumbs-down {
   background: url(../img/downvote.svg) no-repeat;
   border: none;
   margin: 0;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
 }
 
 .thumbs-down:hover {
   background: url(../img/downvote-hover.svg) no-repeat;
   border: none;
   margin: 0;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
 }
 
 footer p{
