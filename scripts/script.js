@@ -100,3 +100,16 @@ $ideaContainer.on('click', '.remove-idea', function() {
 $ideaContainer.on('click', '.thumbs-up', thumbsUpRanking);
 
 $ideaContainer.on('click', '.thumbs-down', thumbsDownRanking);
+
+$(document).ready(function() {
+  $('.search-input').keyup(function() {
+    var filter = $(this).val();
+    $('.idea').each(function() {
+      if($(this).text().search(new RegExp(filter, 'i')) < 0) {
+        $(this).fadeOut();
+      } else {
+        $(this).show();
+      }
+    });
+  });
+});
