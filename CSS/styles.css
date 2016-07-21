@@ -18,7 +18,7 @@ h3 {
   background-color: #E5F3F2;
   color: #6D6E71;
   display: flex;
-  height: 35vh;
+  height: 40vh;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -37,9 +37,8 @@ h3 {
 .title-input, .body-input {
   font-size: 1.2em;
   height: 2em;
-  margin-top: 1em 0;
+  margin: .5em 0;
   text-indent: 8px;
-  margin: 0;
 }
 
 .save-button {
