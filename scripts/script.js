@@ -63,11 +63,12 @@ function clearInput() {
 function thumbsUpRanking() {
   var $ideaElement = $(this).parents('.idea-footer');
   var $rankingElement = $ideaElement.find('.ranking');
+  var ranking = $rankingElement.text();
 
-  if ($rankingElement.text() == 'plausible') {
+  if (ranking == 'plausible') {
     $rankingElement.text('genius');
   }
-  if ($rankingElement.text() == 'swill') {
+  if (ranking == 'swill') {
     $rankingElement.text('plausible');
   }
 
@@ -76,11 +77,12 @@ function thumbsUpRanking() {
 function thumbsDownRanking() {
   var $ideaElement = $(this).parents('.idea-footer');
   var $rankingElement = $ideaElement.find('.ranking');
+  var ranking = $rankingElement.text();
 
-  if ($rankingElement.text() == 'plausible') {
+  if (ranking == 'plausible') {
     $rankingElement.text('swill');
   }
-  if ($rankingElement.text() == 'genius') {
+  if (ranking == 'genius') {
     $rankingElement.text('plausible');
   }
 }
