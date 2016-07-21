@@ -95,9 +95,22 @@ $saveButton.on('click', function(event) {
   clearInput();
 });
 
+//need to make id equal to the random number date.now() creates
+//remove idea from array, localStorage, and page
 $ideaContainer.on('click', '.remove-idea', function() {
   $(this).closest('article').remove();
+  findIdeaById();
 });
+
+function findIdeaById() {
+  var id = Date.now();
+  for (var i = 0; i < ideasArray.length; i++) {
+    if (ideasArray[i].id === id) {
+      ideasArray.splice(i, 1);
+      localStorage.removeItem();
+    }
+  }
+}
 
 $ideaContainer.on('click', '.thumbs-up', thumbsUpRanking);
 
