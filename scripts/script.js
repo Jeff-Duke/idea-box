@@ -3,7 +3,7 @@ var $searchInput = $('.search-input');
 var $ideaContainer = $('.idea-container');
 
 $(document).ready(function() {
-  Ideas.retrieveIdeas();
+  IdeaBox.retrieveIdeas();
   $('.search-input').keyup(function() {
     var filter = $(this).val();
     $('.idea').each(function() {
@@ -16,14 +16,14 @@ $(document).ready(function() {
   });
 });
 
-function Idea(title, body) {
+function Idea(title, body, id = Date.now(), quality = 'swill') {
   this.title = title;
   this.body = body;
-  this.quality = 'swill';
-  this.id = Date.now();
+  this.quality = quality;
+  this.id = id;
 }
 
-var Ideas = {
+var IdeaBox = {
 
   ideasArray: [],
 
@@ -49,31 +49,19 @@ var Ideas = {
 
   retrieveIdeas: function() {
     var storedIdeas = JSON.parse(localStorage.getItem('ideasArray'));
-    if (storedIdeas) { this.ideasArray = storedIdeas; }
+    if (storedIdeas) {
+      this.ideasArray = storedIdeas.map(function (i) {
+        return new Idea(i.title, i.body, i.id, i.quality)
+      });
+    }
     this.ideasToPage();
   },
 
   ideasToPage: function() {
     $ideaContainer.html('');
-    var newIdeasHtml = this.ideasArray.map(function(i) {
-      return $(`
-        <article class="idea" id=${i.id}>
-            <header class="idea-header">
-                <h3 class="idea-title">${i.title}</h3>
-                <section class="idea-header-buttons">
-                    <button class="remove-idea" type="button"></button>
-                </section>
-            </header>
-            <body class="idea-body">
-                <p class="idea-body">${i.body}</p>
-            </body>
-            <footer class="idea-footer">
-                <button class="upVote" type="button"></button>
-                <button class="downVote" type="button"></button>
-                <p>ranking: <span class="ranking">${i.quality}</span></p>
-            </footer>
-        </article>`).prependTo($ideaContainer);
-    });
+    $ideaContainer.prepend(this.ideasArray.map(function(i) {
+      return i.htmlLayout();
+    }));
   },
 
   findIdeaById: function(id) {
@@ -113,45 +101,46 @@ function clearInput() {
   $('.title-input').focus();
 }
 
-// Idea.prototype.htmlLayout = function() {
-//   return $(`
-//     <article class="idea" id=${Ideas.newIdeasHtml.id}>
-//     <header class= "idea-header">
-//     <h3 class="idea-title">${Ideas.newIdeasHtml.title}</h3>
-//     <section class="idea-header-buttons">
-//     <button class="remove-idea" type="button"></button>
-//     </section>
-//     </header>
-//     <body class="idea-body">
-//     <p class="idea-body">${Ideas.newIdeasHtml.body}</p>
-//     </body>
-//     <footer class="idea-footer">
-//     <button class="thumbs-up" type="button"></button>
-//     <button class="thumbs-down" type="button"></button>
-//     <p>ranking: <span class="ranking">${Ideas.newIdeasHtml.quality}</span></p>
-//     </footer>
-//     </article>`).prependTo($ideaContainer);
-//   };
+Idea.prototype.htmlLayout = function() {
+  return $(`
+    <article class="idea" id=${this.id}>
+        <header class="idea-header">
+            <h3 class="idea-title" contenteditable="true">${this.title}</h3>
+            <section class="idea-header-buttons">
+                <button class="remove-idea" type="button"></button>
+            </section>
+        </header>
+
+        <body class="idea-body">
+            <p class="idea-body" contenteditable="true">${this.body}</p>
+        </body>
+        <footer class="idea-footer">
+            <button class="upVote" type="button"></button>
+            <button class="downVote" type="button"></button>
+            <p>ranking: <span class="ranking">${this.quality}</span></p>
+        </footer>
+    </article>`)
+  };
 
 $ideaContainer.on('click', '.remove-idea', function() {
   var id = $(this).parents('.idea').attr('id');
-  Ideas.remove(id);
+  IdeaBox.remove(id);
 });
 
 $ideaContainer.on('click', '.upVote', function() {
   var id = $(this).parents('.idea').attr('id');
-  Ideas.upVote(id);
+  IdeaBox.upVote(id);
 });
 
-$ideaContainer.on('click', '.downVote', function (){
+$ideaContainer.on('click', '.downVote', function () {
   var id = $(this).parents('.idea').attr('id');
-  Ideas.downVote();
+  IdeaBox.downVote(id);
 });
 
 $saveButton.on('click', function(event) {
   event.preventDefault();
-  Ideas.generateNewIdea();
-  Ideas.storeTheArray();
-  Ideas.ideasToPage();
+  IdeaBox.generateNewIdea();
+  IdeaBox.storeTheArray();
+  IdeaBox.ideasToPage();
   clearInput();
 });
