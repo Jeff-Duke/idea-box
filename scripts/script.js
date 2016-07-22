@@ -72,6 +72,29 @@ var Ideas = {
       return idea.id === id;
     });
   },
+
+  upVote: function() {
+    var $rankingElement = $('.ranking');
+    var ranking = $rankingElement.text();
+    if (ranking == 'plausible') {
+      $rankingElement.text('genius');
+    }
+    if (ranking == 'swill') {
+      $rankingElement.text('plausible');
+    }
+  },
+
+  downVote: function(id) {
+    var id = this.id;
+    var $rankingElement = $('.ranking');
+    var ranking = $rankingElement.text();
+    if (ranking == 'plausible') {
+      $rankingElement.text('swill');
+    }
+    if (ranking == 'genius') {
+      $rankingElement.text('plausible');
+    }
+  },
 };
 
 // Idea.prototype.htmlLayout = function() {
@@ -98,26 +121,36 @@ var Ideas = {
 //   var $ideaElement = $(this).parents('.idea-footer');
 //   var $rankingElement = $ideaElement.find('.ranking');
 //   var ranking = $rankingElement.text();
-//   if (ranking == 'plausible') {
-//     $rankingElement.text('genius');
-//   }
-//   if (ranking == 'swill') {
-//     $rankingElement.text('plausible');
-//   }
+  // if (ranking == 'plausible') {
+  //   $rankingElement.text('genius');
+  // }
+  // if (ranking == 'swill') {
+  //   $rankingElement.text('plausible');
+  // }
 // };
 
-$ideaContainer.on('click', '.')
+$ideaContainer.on('click', '.upVote', function() {
+  var id = $(this).parents('.idea-footer').attr('id');
+  var idea = Ideas.findIdeaById(id);
+  Ideas.upVote();
+})
+
+$ideaContainer.on('click', '.downVote', function (){
+  var id = $(this).parents('.idea-footer').attr('id');
+  var idea = Ideas.findIdeaById(id);
+  Ideas.downVote();
+})
 
 // Idea.prototype.downVote = function() {
-//   var $ideaElement = $(this).parents('.idea-footer');
-//   var $rankingElement = $ideaElement.find('.ranking');
-//   var ranking = $rankingElement.text();
-//   if (ranking == 'plausible') {
-//     $rankingElement.text('swill');
-//   }
-//   if (ranking == 'genius') {
-//     $rankingElement.text('plausible');
-//   }
+  // var $ideaElement = $(this).parents('.idea-footer');
+  // var $rankingElement = $ideaElement.find('.ranking');
+  // var ranking = $rankingElement.text();
+  // if (ranking == 'plausible') {
+  //   $rankingElement.text('swill');
+  // }
+  // if (ranking == 'genius') {
+  //   $rankingElement.text('plausible');
+  // }
 // };
 
 // $ideaContainer.on('click', '.thumbs-up', thumbsUpRanking);
@@ -138,15 +171,15 @@ function clearInput() {
   $('.title-input').focus();
 }
 
-function findIdeaById() {
-  var id = Date.now();
-  for (var i = 0; i < ideasArray.length; i++) {
-    if (ideasArray[i].id === id) {
-      ideasArray.splice(i, 1);
-      localStorage.removeItem();
-    }
-  }
-}
+// function findIdeaById() {
+//   var id = Date.now();
+//   for (var i = 0; i < ideasArray.length; i++) {
+//     if (ideasArray[i].id === id) {
+//       ideasArray.splice(i, 1);
+//       localStorage.removeItem();
+//     }
+//   }
+// }
 
 $(document).ready(function() {
   $('.search-input').keyup(function() {

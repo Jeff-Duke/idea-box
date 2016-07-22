@@ -132,7 +132,7 @@ body {
   margin-bottom: 10px;
 }
 
-.thumbs-up {
+.upVote {
   background: url(../img/upvote.svg) no-repeat;
   border: none;
   margin: 0 2px;
@@ -140,7 +140,7 @@ body {
   width: 20px;
 }
 
-.thumbs-up:hover {
+.upVote:hover {
   background: url(../img/upvote-hover.svg) no-repeat;
   border: none;
   margin: 0 2px;
@@ -148,7 +148,7 @@ body {
   width: 20px;
 }
 
-.thumbs-down {
+.downVote {
   background: url(../img/downvote.svg) no-repeat;
   border: none;
   margin: 0;
@@ -156,7 +156,7 @@ body {
   width: 20px;
 }
 
-.thumbs-down:hover {
+.downVote:hover {
   background: url(../img/downvote-hover.svg) no-repeat;
   border: none;
   margin: 0;
