@@ -4,6 +4,7 @@ var $ideaContainer = $('.idea-container');
 
 $(document).ready(function() {
   IdeaBox.retrieveIdeas();
+//Setup the search bar:
   $('.search-input').keyup(function() {
     var filter = $(this).val();
     $('.idea').each(function() {
@@ -51,7 +52,7 @@ var IdeaBox = {
     var storedIdeas = JSON.parse(localStorage.getItem('ideasArray'));
     if (storedIdeas) {
       this.ideasArray = storedIdeas.map(function (i) {
-        return new Idea(i.title, i.body, i.id, i.quality)
+        return new Idea(i.title, i.body, i.id, i.quality);
       });
     }
     this.ideasToPage();
@@ -79,7 +80,7 @@ var IdeaBox = {
     if (idea.quality == 'swill') {
       idea.quality = 'plausible';
     }
-    this.storeTheArray()
+    this.storeTheArray();
   },
 
   downVote: function(id) {
