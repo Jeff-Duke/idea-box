@@ -42,6 +42,11 @@ body {
   height: 2em;
   margin: .5em 0;
   text-indent: 8px;
+  border: 1px solid #939598;
+}
+
+.body-input {
+  resize: none;
 }
 
 .save-button {
@@ -67,6 +72,7 @@ body {
 }
 
 .search-input {
+  border: 1px solid #939598;
   font-size: 16px;
   height: 2em;
   margin-top: 20px;
@@ -93,12 +99,17 @@ body {
 .idea-header {
   display: flex;
   margin-bottom: 15px;
+
+}
+.idea-header h3 {
+  flex: 5;
 }
 
 .idea-header-buttons {
   display: flex;
   justify-content: flex-end;
-  width: 68%;
+  width: 100%;
+  flex: 1;
 }
 
 .remove-idea {
@@ -156,4 +167,44 @@ body {
 footer p{
   margin-left: 5px;
   color: #6d6E71;
+}
+
+@media (max-width: 600px) {
+  html {
+    min-width: 300px;
+  }
+  .idea-input-header h1 {
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  .new-idea-form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .body-input {
+    height: 6em;
+    margin: .5em 0;
+    text-indent: 8px;
+    lines: 3;
+  }
+
+  .save-button {
+    margin-bottom: 15px;
+  }
+  .idea-container {
+    width: 90%;
+  }
+
+  .search-input {
+    width: 90%;
+  }
+
+  .idea {
+    width: 90%;
+  }
+
+
 }
