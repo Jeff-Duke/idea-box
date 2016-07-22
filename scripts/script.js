@@ -2,10 +2,6 @@ var $saveButton = $('.save-button');
 var $searchInput = $('.search-input');
 var $ideaContainer = $('.idea-container');
 
-$(document).ready(function() {
-  Ideas.retrieveIdeas();
-});
-
 function Idea(title, body) {
   this.title = title;
   this.body = body;
@@ -39,9 +35,8 @@ var Ideas = {
 
   retrieveIdeas: function() {
     var storedIdeas = JSON.parse(localStorage.getItem('ideasArray'));
-    if (storedIdeas) { ideasArray = storedIdeas; }
+    if (storedIdeas) { this.ideasArray = storedIdeas; }
     this.ideasToPage();
-    this.ideasArray
   },
 
   ideasToPage: function() {
@@ -182,6 +177,7 @@ function clearInput() {
 // }
 
 $(document).ready(function() {
+  Ideas.retrieveIdeas();
   $('.search-input').keyup(function() {
     var filter = $(this).val();
     $('.idea').each(function() {
