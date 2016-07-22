@@ -2,6 +2,10 @@ var $saveButton = $('.save-button');
 var $searchInput = $('.search-input');
 var $ideaContainer = $('.idea-container');
 
+$(document).ready(function() {
+  Ideas.retrieveIdeas();
+});
+
 function Idea(title, body) {
   this.title = title;
   this.body = body;
@@ -37,41 +41,58 @@ var Ideas = {
     var storedIdeas = JSON.parse(localStorage.getItem('ideasArray'));
     if (storedIdeas) { ideasArray = storedIdeas; }
     this.ideasToPage();
+    this.ideasArray
   },
 
   ideasToPage: function() {
     $ideaContainer.html('');
-    this.ideasArray.map(function(ideasArray) {
-    ideasArray.htmlLayout();
-    });
+    var newIdeasHtml = this.ideasArray.map(function(i) {
+      return $(`
+        <article class="idea" id=${i.id}>
+            <header class="idea-header">
+                <h3 class="idea-title">${i.title}</h3>
+                <section class="idea-header-buttons">
+                    <button class="remove-idea" type="button"></button>
+                </section>
+            </header>
+            <body class="idea-body">
+                <p class="idea-body">${i.body}</p>
+            </body>
+            <footer class="idea-footer">
+                <button class="upVote" type="button"></button>
+                <button class="downVote" type="button"></button>
+                <p>ranking: <span class="ranking">${i.quality}</span></p>
+            </footer>
+        </article>`).prependTo($ideaContainer);
+    })
   },
 
   findIdeaById: function(id) {
     return this.ideasArray.find(function (idea) {
       return idea.id === id;
     });
-  }
+  },
 };
 
-Idea.prototype.htmlLayout = function() {
-  return $(`
-    <article class="idea" id=${Ideas.ideasArray.id}>
-    <header class= "idea-header">
-    <h3 class="idea-title">${Ideas.ideasArray.title}</h3>
-    <section class="idea-header-buttons">
-    <button class="remove-idea" type="button"></button>
-    </section>
-    </header>
-    <body class="idea-body">
-    <p class="idea-body">${Ideas.ideasArray.body}</p>
-    </body>
-    <footer class="idea-footer">
-    <button class="thumbs-up" type="button"></button>
-    <button class="thumbs-down" type="button"></button>
-    <p>ranking: <span class="ranking">${Ideas.ideasArray.quality}</span></p>
-    </footer>
-    </article>`).prependTo($ideaContainer);
-  };
+// Idea.prototype.htmlLayout = function() {
+//   return $(`
+//     <article class="idea" id=${Ideas.newIdeasHtml.id}>
+//     <header class= "idea-header">
+//     <h3 class="idea-title">${Ideas.newIdeasHtml.title}</h3>
+//     <section class="idea-header-buttons">
+//     <button class="remove-idea" type="button"></button>
+//     </section>
+//     </header>
+//     <body class="idea-body">
+//     <p class="idea-body">${Ideas.newIdeasHtml.body}</p>
+//     </body>
+//     <footer class="idea-footer">
+//     <button class="thumbs-up" type="button"></button>
+//     <button class="thumbs-down" type="button"></button>
+//     <p>ranking: <span class="ranking">${Ideas.newIdeasHtml.quality}</span></p>
+//     </footer>
+//     </article>`).prependTo($ideaContainer);
+//   };
 
 // Idea.prototype.upVote = function() {
 //   var $ideaElement = $(this).parents('.idea-footer');
@@ -84,6 +105,8 @@ Idea.prototype.htmlLayout = function() {
 //     $rankingElement.text('plausible');
 //   }
 // };
+
+$ideaContainer.on('click', '.')
 
 // Idea.prototype.downVote = function() {
 //   var $ideaElement = $(this).parents('.idea-footer');
