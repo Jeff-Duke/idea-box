@@ -30,7 +30,7 @@ var Ideas = {
 
   storeTheArray: function() {
     localStorage.setItem('ideasArray', JSON.stringify(this.ideasArray));
-    this.ideasToPage();
+    this.retrieveIdeas();
   },
 
   retrieveIdeas: function() {
