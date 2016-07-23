@@ -110,6 +110,29 @@ h3 {
           justify-content: center;
 }
 
+.sort-ideas {
+  color: #6D6E71;
+  margin-top: 20px;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-pack: center;
+    -ms-flex-pack: center;
+      justify-content: center;
+}
+
+.sort {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  width: 30em;
+}
+
+.sort-button {
+  color: #939598;
+  margin-left: 10px;
+}
+
 .idea {
   border-bottom: 1px solid #D1D3D4;
   color: #939598;
@@ -192,7 +215,7 @@ h3 {
   background: url(../img/downvote-hover.svg) no-repeat;
 }
 
-footer p{
+footer p {
   color: #6d6E71;
   margin-left: 5px;
 }
@@ -224,7 +247,7 @@ footer p{
   .save-button {
     margin-bottom: 15px;
   }
-  .search-input, .idea {
+  .search-input, .idea, .sort {
     width: 90%;
   }
   .idea-container {
