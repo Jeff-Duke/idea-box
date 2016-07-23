@@ -14,7 +14,7 @@ $(document).ready(function() {
         $(this).fadeOut();
       }
       else {
-        $(this).show();
+        $(this).fadeIn();
       }
     });
   });
