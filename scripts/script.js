@@ -29,6 +29,7 @@ function Idea(title, body, id = Date.now(), quality = 'swill') {
 }
 
 var IdeaBox = {
+  counter: 0,
 
   ideasArray: [],
 
@@ -110,18 +111,20 @@ var IdeaBox = {
     idea.body = newBody;
     this.storeTheArray();
   },
-  // sortByQuality: function(array, key) {
-  //   return this.ideasArray.sort(function(a,b){
-  //     var quality1 = a.quality;
-  //     var quality2 = b.quality;
-  //       return ((quality1 < quality2) ? -1 : ((quality1 > quality2) ? 1 : 0 ));
-  //     });
-  //     this.storeTheArray();
-  // },
+
   sortByQuality: function(array, key) {
-    return this.ideasArray.sort(function(a, b) {
-       return ((a.quality < b.quality) ? -1 : ((a.quality > b.quality) ? 1 : 0 ));
-    });
+    if (this.counter % 2 === 0) {
+      $sortButton.text('Low-High');
+      return this.ideasArray.sort(function(a, b) {
+        return ((a.quality < b.quality) ? -1 : ((a.quality > b.quality) ? 1 : 0 ));
+      });
+    }
+    else {
+      $sortButton.text('High-Low');
+      return this.ideasArray.sort(function(a, b) {
+        return ((a.quality > b.quality) ? -1 : ((a.quality < b.quality) ? 1 : 0 ));
+      });
+    }
   },
 
   sortById: function() {
@@ -135,10 +138,7 @@ var IdeaBox = {
     this.sortById();
     this.storeTheArray();
   }
-
-  };
-
-
+};
 
 function clearInput() {
   $titleInput.val('');
@@ -217,4 +217,5 @@ $ideaContainer.on('keyup', '.idea-body', function(e) {
 $sortButton.on('click', function() {
   IdeaBox.sortByQuality();
   IdeaBox.storeTheArray();
+  IdeaBox.counter += 1;
 });
