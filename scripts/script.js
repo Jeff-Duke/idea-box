@@ -94,6 +94,14 @@ var IdeaBox = {
     }
     this.storeTheArray();
   },
+
+  editBody: function(id, bodyInput) {
+    id = parseInt(id);
+    var idea = this.findIdeaById(id);
+    // var bodyInput = this.bodyInput;
+    this.ideasArray.push(bodyInput);
+    this.storeTheArray();
+  },
 };
 
 function clearInput() {
@@ -133,9 +141,27 @@ $ideaContainer.on('click', '.upVote', function() {
   IdeaBox.upVote(id);
 });
 
-$ideaContainer.on('click', '.downVote', function () {
+$ideaContainer.on('click', '.downVote', function() {
   var id = $(this).parents('.idea').attr('id');
   IdeaBox.downVote(id);
+});
+
+$ideaContainer.on('focusout', '.idea-body', function() {
+  var id = $(this).parents('.idea').attr('id');
+  id = parseInt(id);
+  var bodyInput = $(this).text();
+  var idea = IdeaBox.findIdeaById(id);
+  idea.body = bodyInput;
+  IdeaBox.storeTheArray();
+});
+
+$ideaContainer.on('focusout', '.idea-title', function() {
+  var id = $(this).parents('.idea').attr('id');
+  id = parseInt(id);
+  var titleInput = $(this).text();
+  var idea = IdeaBox.findIdeaById(id);
+  idea.title = titleInput;
+  IdeaBox.storeTheArray();
 });
 
 $saveButton.on('click', function(event) {
