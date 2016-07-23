@@ -116,8 +116,8 @@ Idea.prototype.htmlLayout = function() {
             <p class="idea-body" contenteditable="true">${this.body}</p>
         </body>
         <footer class="idea-footer">
-            <button class="upVote" type="button"></button>
-            <button class="downVote" type="button"></button>
+            <button class="btn upVote" type="button"></button>
+            <button class="btn downVote" type="button"></button>
             <p>ranking: <span class="ranking">${this.quality}</span></p>
         </footer>
     </article>`)
