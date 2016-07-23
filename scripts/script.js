@@ -115,16 +115,24 @@ var IdeaBox = {
   sortByQuality: function(array, key) {
     if (this.counter % 2 === 0) {
       $sortButton.text('Low-High');
-      return this.ideasArray.sort(function(a, b) {
-        return ((a.quality < b.quality) ? -1 : ((a.quality > b.quality) ? 1 : 0 ));
-      });
+      this.positiveSorter(this.ideasArray);
     }
     else {
       $sortButton.text('High-Low');
-      return this.ideasArray.sort(function(a, b) {
-        return ((a.quality > b.quality) ? -1 : ((a.quality < b.quality) ? 1 : 0 ));
-      });
+      this.negativeSorter(this.ideasArray);
     }
+  },
+
+  positiveSorter: function(arr) {
+    return arr.sort(function(a, b) {
+      return ((a.quality < b.quality) ? -1 : ((a.quality > b.quality) ? 1 : 0 ));
+    });
+  },
+
+  negativeSorter: function(arr) {
+    return arr.sort(function(a, b) {
+      return ((a.quality > b.quality) ? -1 : ((a.quality < b.quality) ? 1 : 0 ));
+    });
   },
 
   sortById: function() {
