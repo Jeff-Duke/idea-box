@@ -1,9 +1,8 @@
+var $titleInput = $('.title-input');
+var $bodyInput = $('.body-input');
 var $saveButton = $('.save-button');
 var $searchInput = $('.search-input');
 var $ideaContainer = $('.idea-container');
-var $titleInput = $('.title-input');
-var $bodyInput = $('.body-input');
-var $searchInput = $('.search-input');
 
 $(document).ready(function() {
   IdeaBox.retrieveIdeas();
@@ -33,7 +32,7 @@ var IdeaBox = {
   ideasArray: [],
 
   generateNewIdea: function(title, body) {
-    this.ideasArray.push(new Idea($titleInput.val(), $bodyInput.val()));
+    this.ideasArray.unshift(new Idea($titleInput.val(), $bodyInput.val()));
     this.storeTheArray();
   },
 
