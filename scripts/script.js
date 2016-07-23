@@ -1,16 +1,20 @@
 var $saveButton = $('.save-button');
 var $searchInput = $('.search-input');
 var $ideaContainer = $('.idea-container');
+var $titleInput = $('.title-input');
+var $bodyInput = $('.body-input');
+var $searchInput = $('.search-input');
 
 $(document).ready(function() {
   IdeaBox.retrieveIdeas();
-//Setup the search bar:
-  $('.search-input').keyup(function() {
+//Search bar event listener:
+  $searchInput.keyup(function() {
     var filter = $(this).val();
     $('.idea').each(function() {
       if($(this).text().search(new RegExp(filter, 'i')) < 0) {
         $(this).fadeOut();
-      } else {
+      }
+      else {
         $(this).show();
       }
     });
@@ -29,17 +33,7 @@ var IdeaBox = {
   ideasArray: [],
 
   generateNewIdea: function(title, body) {
-    var $titleInput = $('.title-input').val();
-    var $bodyInput = $('.body-input').val();
-    this.ideasArray.push(new Idea($titleInput, $bodyInput));
-    this.storeTheArray();
-  },
-
-  remove: function(id) {
-    id = parseInt(id);
-    this.ideasArray = this.ideasArray.filter(function(i) {
-      return i.id !== id;
-    });
+    this.ideasArray.push(new Idea($titleInput.val(), $bodyInput.val()));
     this.storeTheArray();
   },
 
@@ -71,6 +65,14 @@ var IdeaBox = {
     });
   },
 
+  removeIdea: function(id) {
+    id = parseInt(id);
+    this.ideasArray = this.ideasArray.filter(function(i) {
+      return i.id !== id;
+    });
+    this.storeTheArray();
+  },
+
   upVote: function(id) {
     id = parseInt(id);
     var idea = this.findIdeaById(id);
@@ -95,19 +97,25 @@ var IdeaBox = {
     this.storeTheArray();
   },
 
-  editBody: function(id, bodyInput) {
+  editTitle: function(id, newTitle) {
     id = parseInt(id);
     var idea = this.findIdeaById(id);
-    // var bodyInput = this.bodyInput;
-    this.ideasArray.push(bodyInput);
+    idea.title = newTitle;
+    this.storeTheArray();
+  },
+
+  editBody: function(id, newBody) {
+    id = parseInt(id);
+    var idea = this.findIdeaById(id);
+    idea.body = newBody;
     this.storeTheArray();
   },
 };
 
 function clearInput() {
-  $('.title-input').val('');
-  $('.body-input').val('');
-  $('.title-input').focus();
+  $titleInput.val('');
+  $bodyInput.val('');
+  $titleInput.focus();
 }
 
 Idea.prototype.htmlLayout = function() {
@@ -129,11 +137,19 @@ Idea.prototype.htmlLayout = function() {
             <p>ranking: <span class="ranking">${this.quality}</span></p>
         </footer>
     </article>`)
-  };
+};
+
+$saveButton.on('click', function(event) {
+  event.preventDefault();
+  IdeaBox.generateNewIdea();
+  IdeaBox.storeTheArray();
+  IdeaBox.ideasToPage();
+  clearInput();
+});
 
 $ideaContainer.on('click', '.remove-idea', function() {
   var id = $(this).parents('.idea').attr('id');
-  IdeaBox.remove(id);
+  IdeaBox.removeIdea(id);
 });
 
 $ideaContainer.on('click', '.upVote', function() {
@@ -146,28 +162,26 @@ $ideaContainer.on('click', '.downVote', function() {
   IdeaBox.downVote(id);
 });
 
-$ideaContainer.on('focusout', '.idea-body', function() {
-  var id = $(this).parents('.idea').attr('id');
-  id = parseInt(id);
-  var bodyInput = $(this).text();
-  var idea = IdeaBox.findIdeaById(id);
-  idea.body = bodyInput;
-  IdeaBox.storeTheArray();
-});
-
 $ideaContainer.on('focusout', '.idea-title', function() {
   var id = $(this).parents('.idea').attr('id');
-  id = parseInt(id);
-  var titleInput = $(this).text();
-  var idea = IdeaBox.findIdeaById(id);
-  idea.title = titleInput;
-  IdeaBox.storeTheArray();
+  var newTitle = $(this).text();
+  IdeaBox.editTitle(id, newTitle);
 });
 
-$saveButton.on('click', function(event) {
-  event.preventDefault();
-  IdeaBox.generateNewIdea();
-  IdeaBox.storeTheArray();
-  IdeaBox.ideasToPage();
-  clearInput();
+$ideaContainer.on('keyup', '.idea-title', function(e) {
+  if(e.which == 13) {
+    $(this).focusout();
+  }
+});
+
+$ideaContainer.on('focusout', '.idea-body', function() {
+  var id = $(this).parents('.idea').attr('id');
+  var newBody = $(this).text();
+  IdeaBox.editBody(id, newBody);
+});
+
+$ideaContainer.on('keyup', '.idea-body', function(e) {
+  if(e.which == 13) {
+    $(this).focusout();
+  }
 });
