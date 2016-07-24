@@ -170,7 +170,7 @@ Idea.prototype.htmlLayout = function() {
         <footer class="idea-footer">
             <button class="btn upVote" type="button"></button>
             <button class="btn downVote" type="button"></button>
-            <p>ranking: <span class="ranking">${this.quality}</span></p>
+            <p><span class="ranking">quality: </span>${this.quality}</p>
         </footer>
     </article>`)
 };
