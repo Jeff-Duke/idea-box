@@ -46,7 +46,7 @@ var IdeaBox = {
   retrieveIdeas: function() {
     var storedIdeas = JSON.parse(localStorage.getItem('ideasArray'));
     if (storedIdeas) {
-      this.ideasArray = storedIdeas.map(function (i) {
+      this.ideasArray = storedIdeas.map(function(i) {
         return new Idea(i.title, i.body, i.id, i.quality);
       });
     }
@@ -61,7 +61,7 @@ var IdeaBox = {
   },
 
   findIdeaById: function(id) {
-    return this.ideasArray.find(function (idea) {
+    return this.ideasArray.find(function(idea) {
       return idea.id === id;
     });
   },
