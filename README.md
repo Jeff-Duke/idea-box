@@ -2,7 +2,7 @@
 
 Module 1, Project #4 - Created by Jeff Duke & Kirsten Swanson
 
-![alt tag](idea-box/img/screenshot1.png)
+![alt tag](idea-box/img/screenshot1.png?raw=true)
 
 
 ##Intro
