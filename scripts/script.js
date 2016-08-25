@@ -172,7 +172,7 @@ Idea.prototype.htmlLayout = function() {
             <button class="btn downVote" type="button"></button>
             <p><span class="ranking">quality: </span>${this.quality}</p>
         </footer>
-    </article>`);
+    </article>`)
 };
 
 $saveButton.on('click', function(event) {
